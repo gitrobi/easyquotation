@@ -10,8 +10,13 @@ class TestSina(unittest.TestCase):
         self._sina = easyquotation.use("sina")
 
     def test_get_stock_data(self):
-        stocks = self._sina.stocks(['000001'])
+        stocks = self._sina.stocks(['113016'])
         self.assertEqual(len(stocks), 1)
+
+    def test_get_stocks_date(self):
+        # ['SZ161124', 'SZ000005', 'SZ000002', 'SH113016', 'SH511850', 'SZ159915']
+        stocks = self._sina.stocks(['161124', '000005', '000002', '113016', '511850', '159915'])
+        self.assertEqual(len(stocks), 6)
 
     def test_extract_stock_name(self):
         """
